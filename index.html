@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>Recycle Company</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <nav class="navbar section-content">
+        <a href="#" class="nav-logo">
+            <h2 class="logo-text"> 🍀ReCo.</h2>
+        </a>
+        <ul class="nav-menu">
+            <button id="menu-close-button" class="fas fa-times"></button>
+        <li class="nav-item"> <a href="#" class="nav-link">Home</a>
+        </li>
+         <li class="nav-item"> <a href="#" class="nav-link">About Us</a>
+        </li>
+         <li class="nav-item"> <a href="#" class="nav-link">Pricing</a>
+        </li>
+         <li class="nav-item"> <a href="#" class="nav-link">Sign Up</a>
+        </li>
+        </ul>
+        
+<button id="menu-open-button" class="fas fa-bars"></button>
+    </nav>
+</header>
+<main>
+    <section class="hero-section">
+        <div class="section-content">
+            <div class="hero-details">
+                <h2 class="title"> Welcome to ReCo.</h2>
+                <h3 class="subtitle">Save our planet, earn along the way.</h3>
+                <p class="description"> Recycle your materials,earn money, and help build a better future with ReCo.</p>
+                <div class=" buttons">
+                    <a href="#" class="button start-earning"> Start Earning</a>
+                    <a href="#" class="button contact-us">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero-video">
+                <video autoplay muted playsinline width="400">
+                    <source src="earth.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+    <section class="about-section">
+        <div class="section-content">
+            <div class="about-image-wrapper">
+                <img src="images/tree.jpg" alt="about" class="about-image">
+            </div>
+            <div class=" about-details">
+                <h2 class="section-title"> What Is ReCo?</h2>
+                <p class="text">
+                    Reco is a recycling company that helps you earn money while contributing to a more sustainable future. We provide a convenient and rewarding way to recycle your materials, making it easy for you to make a positive impact on the environment. With Reco, you can turn your recyclable waste into cash rewards, all while helping to reduce landfill waste and promote a greener planet. Join us in our mission to create a cleaner, more sustainable world with Reco.
+                </p>
+                <div class="social-link-list">
+                    <a href ='https://youtu.be/dQw4w9WgXcQ?si=x1pxj6LTbRCP_RRh' class="social-link"> <i class="fab fa-youtube"></i> </a>
+                    <a href ='https://www.instagram.com' class="social-link"> <i class="fab fa-instagram"></i> </a>
+                    <a href ='https://twitter.com' class="social-link"> <i class="fab fa-x-twitter"></i> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section class="contact-section">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="section-content">
+            <ul class="contact-info-list">
+                <li class="contact-info">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <p> Karabük University, Turkey</p>
+            
+                </li>
+                <li class="contact-info">
+                    <i class="fa-regular fa-envelope"></i>
+                    <p> info@reco.com</p>
+            
+                </li>
+
+            <li class="contact-info">
+                    <i class="fa-solid fa-phone"></i>
+                    <p> +9053645380007</p>
+            
+                </li>
+                <li class="contact-info">
+                    <i class="fa-solid fa-globe"></i>
+                    <p> https://www.reco.com</p>
+            
+                </li>
+            </ul>
+            <form action="#" class="contact-form">
+                <input type="text" placeholder="Your Name" class="form-input" required>
+                <input type="email" placeholder="Your Email" class="form-input" required>
+                <textarea placeholder="Your Message..." class="form-input" required></textarea>
+                <button class="submit-button">Submit</button>
+            </form>
+        
+        
+        </div>
+
+    </section><section class="pricing-section">
+    <h2 class="section-title">Pricing</h2>
+
+    <div class="section-content">
+        <div class="pricing-box">
+
+            <label>Material Type</label>
+            <select id="material">
+                <option value="glass">Glass</option>
+                <option value="paper">Paper</option>
+                <option value="wood">Wood</option>
+                <option value="metal">Metal</option>
+            </select>
+
+            <label>Amount (kg)</label>
+            <input type="number" id="weight" placeholder="Enter weight in kg">
+
+            <button onclick="calculatePrice()">Calculate Price</button>
+
+            <h3 id="result">$0.00</h3>
+
+        </div>
+    </div>
+</section>
+    <footer class="footer-section">
+        <div class="section-content">
+            <p class="copyright-text"> &copy; 2026 ReCo.</p>
+            <div class="social-link-list">
+                <a href ='https://youtu.be/dQw4w9WgXcQ?si=x1pxj6LTbRCP_RRh' class="social-link"> <i class="fab fa-youtube"></i> </a>
+                <a href ='https://www.instagram.com' class="social-link"> <i class="fab fa-instagram"></i> </a>
+                <a href ='https://twitter.com' class="social-link"> <i class="fab fa-x-twitter"></i> </a>
+            </div>
+            <p class="policy-text">
+                <a href:"#" class="policy-link"> Privacy Policy</a>
+<span class="seperator">₊˚ ✧ ━━━━⊱⋆⊰━━━━ ✧ ₊˚</span> <a href:"#" class="policy-link"> Refund Policy</a>           </p>
+        </div>
+    </footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
