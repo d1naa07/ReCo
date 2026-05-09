@@ -387,3 +387,6 @@ background:transparent;
 flex-direction:column;
 gap: 20px;
 }
+html {
+    scroll-behavior: smooth;
+}

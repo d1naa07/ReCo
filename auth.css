@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg, #D5FFF5, #A8FFBD);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.auth-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.auth-box{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    width:350px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.auth-box h2{
+    color:#003B30;
+    margin-bottom:10px;
+}
+
+.auth-box p{
+    color:#798D7B;
+    margin-bottom:20px;
+}
+
+.auth-box input{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+.auth-box button{
+    width:100%;
+    padding:10px;
+    background:#003B30;
+    color:white;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.auth-box button:hover{
+    background:#A8FFBD;
+    color:#003B30;
+}
+
+.switch-text{
+    margin-top:15px;
+    font-size:0.9rem;
+}
+
+.switch-text a{
+    color:#003B30;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.switch-text a:hover{
+    text-decoration:underline;}
+
+    .auth-header{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.auth-logo{
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #003B30;
+    text-decoration: none;
+}
+    
