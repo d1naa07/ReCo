@@ -1,3 +1,16 @@
+
+<?php
+session_start();
+
+if(!isset($_SESSION['email'])){
+    header("Location: login.html");
+    exit();
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,10 +166,10 @@
 
         <label>Material</label>
         <select id="material">
-            <option value="wood" data-price="2">Wood ($2/kg)</option>
-            <option value="paper" data-price="1">Paper ($1/kg)</option>
-            <option value="glass" data-price="3">Glass ($3/kg)</option>
-            <option value="metal" data-price="5">Metal ($5/kg)</option>
+           <option value="1" data-price="2">Wood ($2/kg)</option>
+<option value="2" data-price="1">Paper ($1/kg)</option>
+<option value="3" data-price="3">Glass ($3/kg)</option>
+<option value="4" data-price="5">Metal ($5/kg)</option>
         </select>
 
         <label>Weight (kg)</label>
@@ -183,48 +196,48 @@
 <script>
     let cart = [];
 
-    function addToCart(){
-        const materialSelect = document.getElementById("material");
-        const kg = parseFloat(document.getElementById("kg").value);
+   function addToCart(){
+    const materialSelect = document.getElementById("material");
+    const kg = parseFloat(document.getElementById("kg").value);
 
-        if(!kg || kg <= 0) return;
+    if(!kg || kg <= 0) return;
 
-        const price = parseFloat(materialSelect.options[materialSelect.selectedIndex].dataset.price);
-        const name = materialSelect.value;
+    const material_id = parseInt(materialSelect.value);
 
-        const item = {
-            name,
-            kg,
-            price,
-            total: kg * price
-        };
+    cart.push({
+        material_id: material_id,
+        weight: kg
+    });
 
-        cart.push(item);
-        updateCart();
-    }
+    updateCart();
+}
 
     function updateCart(){
-        const cartDiv = document.getElementById("cart");
-        cartDiv.innerHTML = "";
+    const cartDiv = document.getElementById("cart");
+    cartDiv.innerHTML = "";
 
-        let total = 0;
+    let total = 0;
 
-        cart.forEach((item, index) => {
-            total += item.total;
+    cart.forEach((item, index) => {
 
-            cartDiv.innerHTML += `
-                <div class="item">
-                    <div>
-                        <b>${item.name}</b><br>
-                        ${item.kg} kg × $${item.price} = $${item.total}
-                    </div>
-                    <button class="remove" onclick="removeItem(${index})">X</button>
+        const pricePerKg = 1; // temporary visual only
+
+        const subtotal = item.weight * pricePerKg;
+        total += subtotal;
+
+        cartDiv.innerHTML += `
+            <div class="item">
+                <div>
+                    <b>Material ID: ${item.material_id}</b><br>
+                    ${item.weight} kg
                 </div>
-            `;
-        });
+                <button class="remove" onclick="removeItem(${index})">X</button>
+            </div>
+        `;
+    });
 
-        document.getElementById("total").innerText = total;
-    }
+    document.getElementById("total").innerText = total.toFixed(2);
+}
 
     function removeItem(index){
         cart.splice(index, 1);
@@ -237,18 +250,29 @@
     }
 
     function sellAll(){
-        if(cart.length === 0){
-            alert("Your basket is empty!");
-            return;
-        }
 
-        let total = cart.reduce((sum, item) => sum + item.total, 0);
+    fetch("sell.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            cart: cart
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+    console.log(data);
 
-        alert("You earned $" + total + "! 🎉");
+    // redirect to success page
+    window.location.href = "success.php?msg=" + encodeURIComponent(data);
+})
+    .catch(err => {
+        console.error(err);
+        alert("Error sending order");
+    });
 
-        cart = [];
-        updateCart();
-    }
+}
 </script>
 
 </body>
