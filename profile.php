@@ -15,6 +15,13 @@ $result = $conn->query($sql);
 
 $user = $result->fetch_assoc();
 $user_id = $user['user_id'];
+$points = $user['points'];
+
+$level = floor($points / 100) + 1;
+
+$nextLevelPoints = $level * 100;
+
+$currentLevelProgress = $points % 100;
 
 // ✅ FIX: orders query AFTER user_id exists
 $ordersQuery = "SELECT * FROM RecycleOrders WHERE user_id='$user_id' ORDER BY order_date DESC";
@@ -167,12 +174,68 @@ button{
 
 <div class="profile-header">
 
+    <form action="upload_pfp.php" method="POST" enctype="multipart/form-data">
+
     <label class="avatar-wrapper">
-        <img class="profile-pic" id="preview" src="https://via.placeholder.com/70">
-        <input type="file" accept="image/*" onchange="loadImage(event)">
+
+        <img
+            class="profile-pic"
+            id="preview"
+            src="<?php echo !empty($user['profile_picture']) ? $user['profile_picture'] : 'https://via.placeholder.com/70'; ?>"
+        >
+
+        <input
+            type="file"
+            name="pfp"
+            accept="image/*"
+            onchange="this.form.submit()"
+        >
+
     </label>
 
-    <div class="username"><?php echo $user['name']; ?></div>
+</form>
+
+    <div>
+
+    <div class="username">
+        <?php echo $user['name']; ?>
+    </div>
+
+    <div style="margin-top:6px; width:250px;">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            font-size:13px;
+            margin-bottom:4px;
+            color:#003B30;
+            font-weight:500;
+        ">
+            <span>Level <?php echo $level; ?></span>
+            <span><?php echo $points; ?> XP</span>
+        </div>
+
+        <div style="
+            width:100%;
+            height:12px;
+            background:#dfeee4;
+            border-radius:20px;
+            overflow:hidden;
+        ">
+
+            <div style="
+                width:<?php echo $currentLevelProgress; ?>%;
+                height:100%;
+                background:#00b86b;
+                border-radius:20px;
+                transition:0.4s;
+            "></div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </div>
 
@@ -262,7 +325,9 @@ button{
         <!-- SETTINGS -->
         <div id="settings" class="section">
             <h2>Settings</h2>
-            <button>Logout</button>
+            <a href="logout.php"><button>Logout</button></a>
+                
+               
         </div>
 
     </div>

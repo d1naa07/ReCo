@@ -59,7 +59,7 @@ $msg = $_GET['msg'] ?? "Order completed successfully!";
 <body>
 
 <div class="box">
-    <h1>✔ Success!</h1>
+    <h1>♻️ Recycle Request Sent!</h1>
     <p><?php echo htmlspecialchars($msg); ?></p>
 
     <a href="index.html">Back to Home</a>

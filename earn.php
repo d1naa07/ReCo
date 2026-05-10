@@ -213,6 +213,7 @@ if(!isset($_SESSION['email'])){
 }
 
     function updateCart(){
+
     const cartDiv = document.getElementById("cart");
     cartDiv.innerHTML = "";
 
@@ -220,18 +221,41 @@ if(!isset($_SESSION['email'])){
 
     cart.forEach((item, index) => {
 
-        const pricePerKg = 1; // temporary visual only
+        let price = 0;
+        let materialName = "";
 
-        const subtotal = item.weight * pricePerKg;
+        // material prices
+        if(item.material_id == 1){
+            price = 2;
+            materialName = "Wood";
+        }
+        else if(item.material_id == 2){
+            price = 1;
+            materialName = "Paper";
+        }
+        else if(item.material_id == 3){
+            price = 3;
+            materialName = "Glass";
+        }
+        else if(item.material_id == 4){
+            price = 5;
+            materialName = "Metal";
+        }
+
+        const subtotal = item.weight * price;
+
         total += subtotal;
 
         cartDiv.innerHTML += `
             <div class="item">
                 <div>
-                    <b>Material ID: ${item.material_id}</b><br>
-                    ${item.weight} kg
+                    <b>${materialName}</b><br>
+                    ${item.weight} kg × $${price} = $${subtotal}
                 </div>
-                <button class="remove" onclick="removeItem(${index})">X</button>
+
+                <button class="remove" onclick="removeItem(${index})">
+                    X
+                </button>
             </div>
         `;
     });

@@ -112,7 +112,12 @@ foreach($cart as $item){
     ");
 }
 
-// SUCCESS
-echo "OK - TOTAL PRICE: " . $total_price;
+$conn->query("
+    UPDATE Users
+    SET points = points + $total_price
+    WHERE user_id = '$user_id'
+");
+
+echo "Your recycle order was submitted successfully! Total earned: $" . $total_price . ". Our delivery team will contact you through your phone number to schedule the pickup date and time.";
 
 ?>
